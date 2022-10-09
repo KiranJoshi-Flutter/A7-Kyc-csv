@@ -13,12 +13,6 @@ public class FamilyDetail {
 	// type = Grand Father, Father Name, Mother Name
 	private String type;
 
-	private String firstNameEng;
-	private String middleNameEng;
-	private String lastNameEng;
-
-	private String firstNameNep;
-	private String middleNameNep;
-	private String lastNameNep;
+	private PersonDetail personDetail = new PersonDetail();
 
 }

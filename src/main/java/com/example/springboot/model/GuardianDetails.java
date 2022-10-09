@@ -12,10 +12,13 @@ public class GuardianDetails {
 
 	private String boid;
 
-	private String photoFileId;
-	private String firstName;
-	private String middleName;
-	private String lastName;
+//	private String photoFileId;
+//	private String firstName;
+//	private String middleName;
+//	private String lastName;
+
+	private PersonDetail personDetail = new PersonDetail();
+
 	private String relationshipWithApplicant;
 	private String country;
 	private String State;
