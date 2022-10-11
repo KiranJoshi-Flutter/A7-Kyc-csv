@@ -33,12 +33,12 @@ public class PersonDetail {
 
 	private String otherBoids;
 
-	private List<AddressDetails> addressDetailList = new ArrayList<>();
+	private Biometrics biometrics = new Biometrics();
+	private List<FamilyDetail> familyDetailList = new ArrayList<>();
 	private List<DocumentDetails> documentDetailList = new ArrayList<>();
+	private List<AddressDetails> addressDetailList = new ArrayList<>();
 	private BankDetails bankDetails = new BankDetails();
 	private List<OccupationDetails> occupationDetailList = new ArrayList<>();
-	private Biometrics biometrics = new Biometrics();
-	private GuardianDetails guardianDetails = new GuardianDetails();
-	private List<FamilyDetail> familyDetailList = new ArrayList<>();
+//	private GuardianDetails guardianDetails = new GuardianDetails();
 
 }

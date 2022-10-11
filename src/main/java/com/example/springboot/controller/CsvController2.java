@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.springboot.model.Biometrics;
+import com.example.springboot.model.PersonDetail;
 import com.univocity.parsers.common.record.Record;
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
@@ -181,6 +183,8 @@ public class CsvController2 {
 
 	private void getDataForPD(String code, Record record, List<String> row) {
 
+		PersonDetail personDetail = new PersonDetail();
+
 		String check2 = record.getValue(2, String.class);
 		String check3 = record.getValue(3, String.class);
 		String check4 = record.getValue(4, String.class);
@@ -189,31 +193,67 @@ public class CsvController2 {
 		row.add(check3);
 		row.add(check4);
 
+		personDetail.setBoid(check2);
+		personDetail.setPhotoFileId(check3);
+		personDetail.setFirstNameEng(check4);
+//		personDetail.setMiddelNameEng(check4);
+//		personDetail.setLastNameEng(check4);
+//		
+//		personDetail.setFirstNameNep(check4);
+//		personDetail.setMiddleNameNep(check4);
+//		personDetail.setLastNameNep(check4);
+//		
+//		personDetail.setDateOfBirthBs(check4);
+//		personDetail.setDateOfBirthAd(check4);
+//		
+//		personDetail.setGender(check4);
+//		personDetail.setNationality(check4);
+//		personDetail.setPan(check4);
+//		personDetail.setNrn(check4);
+//		personDetail.setMaritialStatus(check4);
+//		personDetail.setDifferentlyAbled(check4);
+//		
+//		personDetail.setOtherBoids(check4);
+
 		System.out.println(row);
 
-		System.out.println("PD check updated");
+		System.out.println("PD check");
+
+		System.out.println("-------------");
+		System.out.println(personDetail);
+		System.out.println("-------------");
 
 	}
 
 	private void getDataForBM(String code, Record record, List<String> row) {
+
+		Biometrics biometrics = new Biometrics();
 
 		String checkk2 = record.getValue(2, String.class);
 		String checkk3 = record.getValue(3, String.class);
 		String checkk4 = record.getValue(4, String.class);
 		String checkk5 = record.getValue(5, String.class);
 		String checkk6 = record.getValue(6, String.class);
-		String checkk7 = record.getValue(7, String.class);
 
 		row.add(checkk2);
 		row.add(checkk3);
 		row.add(checkk4);
 		row.add(checkk5);
 		row.add(checkk6);
-		row.add(checkk7);
+
+		biometrics.setFingerPrintIsoLeft(checkk2);
+		biometrics.setFingerPrintIsoRight(checkk3);
+		biometrics.setLeftFileId(checkk4);
+		biometrics.setRightFileId(checkk5);
+		biometrics.setSignatureFileId(checkk6);
 
 		System.out.println(row);
 
 		System.out.println("BM check");
+
+		System.out.println("-------------");
+		System.out.println(biometrics);
+		System.out.println("-------------");
 
 	}
 
