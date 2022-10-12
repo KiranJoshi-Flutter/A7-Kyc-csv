@@ -31,8 +31,9 @@ public class CsvController2 {
 		System.out.println("--------------------------------------------");
 
 		List<List<String>> matrix = new ArrayList<List<String>>();
-
 		String multiple = null;
+		PersonDetail personDetail = new PersonDetail();
+
 		for (Record record : parseAllRecords) {
 			System.out.println(record);
 			String code = record.getValue(1, String.class);
@@ -42,13 +43,14 @@ public class CsvController2 {
 			List<String> row = new ArrayList<String>();
 			switch (code) {
 			case "PD":
-				PersonDetail personDetail = new PersonDetail();
 				personDetail = getDataForPD(code, record, row);
 				personDetails.add(personDetail);
 				break;
 
 			case "BM":
-				getDataForBM(code, record, row);
+				Biometrics biometrics = new Biometrics();
+				biometrics = getDataForBM(code, record, row);
+				personDetail.setBiometrics(biometrics);
 				break;
 
 			case "FD":
@@ -250,23 +252,23 @@ public class CsvController2 {
 
 		Biometrics biometrics = new Biometrics();
 
-		String checkk2 = record.getValue(2, String.class);
-		String checkk3 = record.getValue(3, String.class);
-		String checkk4 = record.getValue(4, String.class);
-		String checkk5 = record.getValue(5, String.class);
-		String checkk6 = record.getValue(6, String.class);
+		String fingerPrintIsoLeft = record.getValue(2, String.class);
+		String fingerPrintIsoRight = record.getValue(3, String.class);
+		String leftFileId = record.getValue(4, String.class);
+		String rightFileId = record.getValue(5, String.class);
+		String signatureFileId = record.getValue(6, String.class);
 
-		row.add(checkk2);
-		row.add(checkk3);
-		row.add(checkk4);
-		row.add(checkk5);
-		row.add(checkk6);
+		row.add(fingerPrintIsoLeft);
+		row.add(fingerPrintIsoRight);
+		row.add(leftFileId);
+		row.add(rightFileId);
+		row.add(signatureFileId);
 
-		biometrics.setFingerPrintIsoLeft(checkk2);
-		biometrics.setFingerPrintIsoRight(checkk3);
-		biometrics.setLeftFileId(checkk4);
-		biometrics.setRightFileId(checkk5);
-		biometrics.setSignatureFileId(checkk6);
+		biometrics.setFingerPrintIsoLeft(fingerPrintIsoLeft);
+		biometrics.setFingerPrintIsoRight(fingerPrintIsoRight);
+		biometrics.setLeftFileId(leftFileId);
+		biometrics.setRightFileId(rightFileId);
+		biometrics.setSignatureFileId(signatureFileId);
 
 //		System.out.println(row);
 //

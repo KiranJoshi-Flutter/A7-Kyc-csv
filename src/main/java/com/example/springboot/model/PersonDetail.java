@@ -1,5 +1,8 @@
 package com.example.springboot.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -31,7 +34,7 @@ public class PersonDetail {
 	private String otherBoids;
 
 	private Biometrics biometrics = new Biometrics();
-//	private List<FamilyDetail> familyDetailList = new ArrayList<>();
+	private List<FamilyDetail> familyDetailList = new ArrayList<>();
 //	private List<DocumentDetails> documentDetailList = new ArrayList<>();
 //	private List<AddressDetails> addressDetailList = new ArrayList<>();
 //	private BankDetails bankDetails = new BankDetails();
