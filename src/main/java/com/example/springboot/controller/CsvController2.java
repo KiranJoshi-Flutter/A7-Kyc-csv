@@ -18,8 +18,10 @@ import com.univocity.parsers.csv.CsvParserSettings;
 @RestController
 public class CsvController2 {
 
+	List<PersonDetail> personDetails = new ArrayList<>();
+
 	@PostMapping("/uploadKycCsv2")
-	public String uploadKycCsv(@RequestParam("file") MultipartFile file) throws Exception {
+	public List<PersonDetail> uploadKycCsv(@RequestParam("file") MultipartFile file) throws Exception {
 
 		InputStream inputStream = file.getInputStream();
 		CsvParserSettings setting = new CsvParserSettings();
@@ -40,7 +42,9 @@ public class CsvController2 {
 			List<String> row = new ArrayList<String>();
 			switch (code) {
 			case "PD":
-				getDataForPD(code, record, row);
+				PersonDetail personDetail = new PersonDetail();
+				personDetail = getDataForPD(code, record, row);
+				personDetails.add(personDetail);
 				break;
 
 			case "BM":
@@ -81,7 +85,8 @@ public class CsvController2 {
 
 		System.out.println(matrix);
 
-		return "Upload Successful !!!";
+//		return "Upload Successful !!!";
+		return personDetails;
 	}
 
 	private void getDataForGD(String code, Record record, List<String> row) {
@@ -181,51 +186,67 @@ public class CsvController2 {
 
 	}
 
-	private void getDataForPD(String code, Record record, List<String> row) {
+	private PersonDetail getDataForPD(String code, Record record, List<String> row) {
 
 		PersonDetail personDetail = new PersonDetail();
 
-		String check2 = record.getValue(2, String.class);
-		String check3 = record.getValue(3, String.class);
-		String check4 = record.getValue(4, String.class);
+		String boid = record.getValue(2, String.class);
+		String photoFieldId = record.getValue(3, String.class);
+		String firstNameEng = record.getValue(4, String.class);
+		String middelNameEng = record.getValue(5, String.class);
+		String lastNameEng = record.getValue(6, String.class);
+		String firstNameNep = record.getValue(7, String.class);
+		String middleNameNep = record.getValue(8, String.class);
+		String lastNameNep = record.getValue(9, String.class);
+		String dateOfBirthBs = record.getValue(10, String.class);
+		String dateOfBirthAd = record.getValue(11, String.class);
+		String gender = record.getValue(12, String.class);
+		String nationality = record.getValue(13, String.class);
+		String pan = record.getValue(14, String.class);
+		String nrn = record.getValue(15, String.class);
+		String maritialStatus = record.getValue(16, String.class);
+		String differentlyAbled = record.getValue(17, String.class);
+		String otherBoids = record.getValue(18, String.class);
 
-		row.add(check2);
-		row.add(check3);
-		row.add(check4);
+//		row.add(boid);
+//		row.add(photoFieldId);
+//		row.add(firstNameEng);
 
-		personDetail.setBoid(check2);
-		personDetail.setPhotoFileId(check3);
-		personDetail.setFirstNameEng(check4);
-//		personDetail.setMiddelNameEng(check4);
-//		personDetail.setLastNameEng(check4);
-//		
-//		personDetail.setFirstNameNep(check4);
-//		personDetail.setMiddleNameNep(check4);
-//		personDetail.setLastNameNep(check4);
-//		
-//		personDetail.setDateOfBirthBs(check4);
-//		personDetail.setDateOfBirthAd(check4);
-//		
-//		personDetail.setGender(check4);
-//		personDetail.setNationality(check4);
-//		personDetail.setPan(check4);
-//		personDetail.setNrn(check4);
-//		personDetail.setMaritialStatus(check4);
-//		personDetail.setDifferentlyAbled(check4);
-//		
-//		personDetail.setOtherBoids(check4);
+		personDetail.setBoid(boid);
+		personDetail.setPhotoFileId(photoFieldId);
+		personDetail.setFirstNameEng(firstNameEng);
+		personDetail.setMiddelNameEng(middelNameEng);
+		personDetail.setLastNameEng(lastNameEng);
 
-		System.out.println(row);
+		personDetail.setFirstNameNep(firstNameNep);
+		personDetail.setMiddleNameNep(middleNameNep);
+		personDetail.setLastNameNep(lastNameNep);
 
-		System.out.println("PD check");
+		personDetail.setDateOfBirthBs(dateOfBirthBs);
+		personDetail.setDateOfBirthAd(dateOfBirthAd);
 
-		System.out.println("-------------");
-		System.out.println(personDetail);
-		System.out.println("-------------");
+		personDetail.setGender(gender);
+		personDetail.setNationality(nationality);
+		personDetail.setPan(pan);
+		personDetail.setNrn(nrn);
+		personDetail.setMaritialStatus(maritialStatus);
+		personDetail.setDifferentlyAbled(differentlyAbled);
+
+		personDetail.setOtherBoids(otherBoids);
+
+//		System.out.println(row);
+//
+//		System.out.println("PD check");
+//
+//		System.out.println("-------------");
+//		System.out.println(personDetail);
+//		System.out.println("-------------");
+
+		return personDetail;
 
 	}
 
-	private void getDataForBM(String code, Record record, List<String> row) {
+	private Biometrics getDataForBM(String code, Record record, List<String> row) {
 
 		Biometrics biometrics = new Biometrics();
 
@@ -247,13 +268,15 @@ public class CsvController2 {
 		biometrics.setRightFileId(checkk5);
 		biometrics.setSignatureFileId(checkk6);
 
-		System.out.println(row);
+//		System.out.println(row);
+//
+//		System.out.println("BM check");
+//
+//		System.out.println("-------------");
+//		System.out.println(biometrics);
+//		System.out.println("-------------");
 
-		System.out.println("BM check");
-
-		System.out.println("-------------");
-		System.out.println(biometrics);
-		System.out.println("-------------");
+		return biometrics;
 
 	}
 
