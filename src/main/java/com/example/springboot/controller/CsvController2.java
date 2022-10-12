@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.springboot.model.Biometrics;
+import com.example.springboot.model.FamilyDetail;
 import com.example.springboot.model.PersonDetail;
 import com.univocity.parsers.common.record.Record;
 import com.univocity.parsers.csv.CsvParser;
@@ -170,6 +171,79 @@ public class CsvController2 {
 
 	private String getDataForFD(String code, Record record, List<String> row) {
 
+		String type = record.getValue(2, String.class);
+
+		String firstNameEng = record.getValue(3, String.class);
+		String middelNameEng = record.getValue(4, String.class);
+		String lastNameEng = record.getValue(5, String.class);
+		String firstNameNep = record.getValue(6, String.class);
+		String middleNameNep = record.getValue(7, String.class);
+		String lastNameNep = record.getValue(8, String.class);
+
+		List<FamilyDetail> familyDetails = new ArrayList<>();
+
+		if (type.equals("GF")) {
+
+			FamilyDetail familyDetail = new FamilyDetail();
+			familyDetail.setType(type);
+			PersonDetail personDetail = new PersonDetail();
+			personDetail.setFirstNameEng(firstNameEng);
+			personDetail.setMiddelNameEng(middelNameEng);
+			personDetail.setLastNameEng(lastNameEng);
+
+			personDetail.setFirstNameNep(firstNameNep);
+			personDetail.setMiddleNameNep(middleNameNep);
+			personDetail.setLastNameNep(lastNameNep);
+
+			familyDetail.setPersonDetail(personDetail);
+
+			System.out.println("-------------");
+			System.out.println(familyDetail);
+			System.out.println("-------------");
+
+			familyDetails.add(familyDetail);
+		} else if (type == "F") {
+
+			FamilyDetail familyDetail = new FamilyDetail();
+			PersonDetail personDetail = new PersonDetail();
+			personDetail.setFirstNameEng(firstNameEng);
+			personDetail.setMiddelNameEng(middelNameEng);
+			personDetail.setLastNameEng(lastNameEng);
+
+			personDetail.setFirstNameNep(firstNameNep);
+			personDetail.setMiddleNameNep(middleNameNep);
+			personDetail.setLastNameNep(lastNameNep);
+
+			familyDetail.setPersonDetail(personDetail);
+
+			System.out.println("-------------");
+			System.out.println(familyDetail);
+			System.out.println("-------------");
+
+			familyDetails.add(familyDetail);
+
+		} else if (type == "M") {
+
+			FamilyDetail familyDetail = new FamilyDetail();
+			PersonDetail personDetail = new PersonDetail();
+			personDetail.setFirstNameEng(firstNameEng);
+			personDetail.setMiddelNameEng(middelNameEng);
+			personDetail.setLastNameEng(lastNameEng);
+
+			personDetail.setFirstNameNep(firstNameNep);
+			personDetail.setMiddleNameNep(middleNameNep);
+			personDetail.setLastNameNep(lastNameNep);
+
+			familyDetail.setPersonDetail(personDetail);
+
+			System.out.println("-------------");
+			System.out.println(familyDetail);
+			System.out.println("-------------");
+
+			familyDetails.add(familyDetail);
+
+		}
+
 		String checkkk2 = record.getValue(2, String.class);
 		String checkkk3 = record.getValue(3, String.class);
 		String checkkk4 = record.getValue(4, String.class);
@@ -183,6 +257,10 @@ public class CsvController2 {
 		System.out.println(row);
 
 		System.out.println("FD check");
+
+		System.out.println("-------------");
+		System.out.println(familyDetails);
+		System.out.println("-------------");
 
 		return multiple;
 

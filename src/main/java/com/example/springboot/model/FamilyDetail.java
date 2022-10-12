@@ -12,4 +12,8 @@ public class FamilyDetail {
 
 	private PersonDetail personDetail = new PersonDetail();
 
+//	void setPersonDetail(PersonDetail personDetail) {
+//		this.personDetail = personDetail;
+//	}
+
 }
