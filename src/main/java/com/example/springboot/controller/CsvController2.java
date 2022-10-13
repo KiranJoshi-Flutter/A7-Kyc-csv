@@ -32,22 +32,24 @@ public class CsvController2 {
 		System.out.println("--------------------------------------------");
 
 		List<List<String>> matrix = new ArrayList<List<String>>();
-		String multiple = null;
-		PersonDetail personDetail = new PersonDetail();
 		List<FamilyDetail> familyDetails = new ArrayList<>();
+		PersonDetail personDetail = new PersonDetail();
 
 		for (Record record : parseAllRecords) {
 			System.out.println(record);
 			String code = record.getValue(1, String.class);
+
 			if (code == null) {
-				code = multiple;
+				code = "FD";
 			}
 
-			if (!code.equals(multiple)) {
-				personDetail.setFamilyDetailList(familyDetails);
-			}
+//			if (!code.equals("FD")) {
+//			if (code.equals("DD")) {
+//				personDetail.setFamilyDetailList(familyDetails);
+//			}
 
 			List<String> row = new ArrayList<String>();
+
 			switch (code) {
 			case "PD":
 				personDetail = getDataForPD(code, record, row);
@@ -61,13 +63,11 @@ public class CsvController2 {
 				break;
 
 			case "FD":
-				multiple = getDataForFD(code, record, row, familyDetails);
-
-//				getDataForFD(code, record, row, familyDetails);
+				getDataForFD(code, record, row, personDetail, familyDetails);
 				break;
 
 			case "DD":
-				multiple = getDataForDD(code, record, row);
+				getDataForDD(code, record, row);
 				break;
 
 			case "AD":
@@ -178,8 +178,8 @@ public class CsvController2 {
 		return multiple;
 	}
 
-	private String getDataForFD(String code, Record record, List<String> row, List<FamilyDetail> familyDetails) {
-//	private void getDataForFD(String code, Record record, List<String> row, List<FamilyDetail> familyDetails) {
+	private void getDataForFD(String code, Record record, List<String> row, PersonDetail personDetail2,
+			List<FamilyDetail> familyDetails) {
 
 		String type = record.getValue(2, String.class);
 
@@ -209,7 +209,9 @@ public class CsvController2 {
 			System.out.println(familyDetail);
 			System.out.println("-------------");
 
-			familyDetails.add(familyDetail);
+//			familyDetails.add(familyDetail);
+
+			personDetail2.familyDetailList.add(familyDetail);
 
 		} else if (type.equals("F")) {
 
@@ -230,7 +232,9 @@ public class CsvController2 {
 			System.out.println(familyDetail);
 			System.out.println("-------------");
 
-			familyDetails.add(familyDetail);
+//			familyDetails.add(familyDetail);
+
+			personDetail2.familyDetailList.add(familyDetail);
 
 		} else if (type.equals("M")) {
 
@@ -251,7 +255,9 @@ public class CsvController2 {
 			System.out.println(familyDetail);
 			System.out.println("-------------");
 
-			familyDetails.add(familyDetail);
+//			familyDetails.add(familyDetail);
+
+			personDetail2.familyDetailList.add(familyDetail);
 
 		}
 
@@ -263,8 +269,6 @@ public class CsvController2 {
 		row.add(checkkk3);
 		row.add(checkkk4);
 
-		String multiple = "FD";
-
 		System.out.println(row);
 
 		System.out.println("FD check");
@@ -272,8 +276,6 @@ public class CsvController2 {
 		System.out.println("-------------");
 		System.out.println(familyDetails);
 		System.out.println("-------------");
-
-		return multiple;
 
 	}
 
