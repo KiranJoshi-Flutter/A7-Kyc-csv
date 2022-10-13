@@ -1,11 +1,15 @@
 package com.example.springboot.model;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+//@Data
+
+@Getter
+@Setter
 @NoArgsConstructor
-public class OccupationDetails {
+public class OccupationDetail {
 
 	private String boid;
 

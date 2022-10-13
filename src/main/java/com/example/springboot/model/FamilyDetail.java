@@ -1,9 +1,12 @@
 package com.example.springboot.model;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+//@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class FamilyDetail {
 

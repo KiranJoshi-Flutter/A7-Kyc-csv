@@ -3,11 +3,17 @@ package com.example.springboot.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-@Data
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
 @NoArgsConstructor
+@JsonInclude(Include.NON_NULL)
 public class PersonDetail {
 
 	private String boid;
@@ -39,8 +45,9 @@ public class PersonDetail {
 //	private List<DocumentDetails> documentDetailList = new ArrayList<>();
 	public List<DocumentDetail> documentDetailList = new ArrayList<>();
 //	private List<AddressDetails> addressDetailList = new ArrayList<>();
-//	private BankDetails bankDetails = new BankDetails();
+	private BankDetail bankDetail = new BankDetail();
 //	private List<OccupationDetails> occupationDetailList = new ArrayList<>();
-//	private GuardianDetails guardianDetails = new GuardianDetails();
+	private OccupationDetail occupationDetail = new OccupationDetail();
 
+	private GuardianDetails guardianDetails;
 }
