@@ -34,6 +34,7 @@ public class CsvController2 {
 		List<List<String>> matrix = new ArrayList<List<String>>();
 		String multiple = null;
 		PersonDetail personDetail = new PersonDetail();
+		List<FamilyDetail> familyDetails = new ArrayList<>();
 
 		for (Record record : parseAllRecords) {
 			System.out.println(record);
@@ -41,6 +42,11 @@ public class CsvController2 {
 			if (code == null) {
 				code = multiple;
 			}
+
+			if (!code.equals(multiple)) {
+				personDetail.setFamilyDetailList(familyDetails);
+			}
+
 			List<String> row = new ArrayList<String>();
 			switch (code) {
 			case "PD":
@@ -55,7 +61,9 @@ public class CsvController2 {
 				break;
 
 			case "FD":
-				multiple = getDataForFD(code, record, row);
+				multiple = getDataForFD(code, record, row, familyDetails);
+
+//				getDataForFD(code, record, row, familyDetails);
 				break;
 
 			case "DD":
@@ -82,6 +90,7 @@ public class CsvController2 {
 				break;
 			}
 			matrix.add(row);
+
 		}
 
 		System.out.println("------------------------------------------------");
@@ -169,7 +178,8 @@ public class CsvController2 {
 		return multiple;
 	}
 
-	private String getDataForFD(String code, Record record, List<String> row) {
+	private String getDataForFD(String code, Record record, List<String> row, List<FamilyDetail> familyDetails) {
+//	private void getDataForFD(String code, Record record, List<String> row, List<FamilyDetail> familyDetails) {
 
 		String type = record.getValue(2, String.class);
 
@@ -179,8 +189,6 @@ public class CsvController2 {
 		String firstNameNep = record.getValue(6, String.class);
 		String middleNameNep = record.getValue(7, String.class);
 		String lastNameNep = record.getValue(8, String.class);
-
-		List<FamilyDetail> familyDetails = new ArrayList<>();
 
 		if (type.equals("GF")) {
 
@@ -202,9 +210,11 @@ public class CsvController2 {
 			System.out.println("-------------");
 
 			familyDetails.add(familyDetail);
-		} else if (type == "F") {
+
+		} else if (type.equals("F")) {
 
 			FamilyDetail familyDetail = new FamilyDetail();
+			familyDetail.setType(type);
 			PersonDetail personDetail = new PersonDetail();
 			personDetail.setFirstNameEng(firstNameEng);
 			personDetail.setMiddelNameEng(middelNameEng);
@@ -222,9 +232,10 @@ public class CsvController2 {
 
 			familyDetails.add(familyDetail);
 
-		} else if (type == "M") {
+		} else if (type.equals("M")) {
 
 			FamilyDetail familyDetail = new FamilyDetail();
+			familyDetail.setType(type);
 			PersonDetail personDetail = new PersonDetail();
 			personDetail.setFirstNameEng(firstNameEng);
 			personDetail.setMiddelNameEng(middelNameEng);
