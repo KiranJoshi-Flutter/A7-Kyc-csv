@@ -37,6 +37,7 @@ public class PersonDetail {
 //	private List<FamilyDetail> familyDetailList = new ArrayList<FamilyDetail>();
 	public List<FamilyDetail> familyDetailList = new ArrayList<FamilyDetail>();
 //	private List<DocumentDetails> documentDetailList = new ArrayList<>();
+	public List<DocumentDetail> documentDetailList = new ArrayList<>();
 //	private List<AddressDetails> addressDetailList = new ArrayList<>();
 //	private BankDetails bankDetails = new BankDetails();
 //	private List<OccupationDetails> occupationDetailList = new ArrayList<>();

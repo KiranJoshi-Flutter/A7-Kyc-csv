@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.springboot.model.Biometrics;
+import com.example.springboot.model.DocumentDetail;
 import com.example.springboot.model.FamilyDetail;
 import com.example.springboot.model.PersonDetail;
 import com.univocity.parsers.common.record.Record;
@@ -33,6 +34,7 @@ public class CsvController2 {
 
 		List<List<String>> matrix = new ArrayList<List<String>>();
 		List<FamilyDetail> familyDetails = new ArrayList<>();
+		List<DocumentDetail> documentDetails = new ArrayList<>();
 		PersonDetail personDetail = new PersonDetail();
 
 		for (Record record : parseAllRecords) {
@@ -40,7 +42,7 @@ public class CsvController2 {
 			String code = record.getValue(1, String.class);
 
 			if (code == null) {
-				code = "FD";
+				code = "DD";
 			}
 
 //			if (!code.equals("FD")) {
@@ -67,7 +69,7 @@ public class CsvController2 {
 				break;
 
 			case "DD":
-				getDataForDD(code, record, row);
+				getDataForDD(code, record, row, personDetail, documentDetails);
 				break;
 
 			case "AD":
@@ -160,7 +162,92 @@ public class CsvController2 {
 		System.out.println("AD check");
 	}
 
-	private String getDataForDD(String code, Record record, List<String> row) {
+	private String getDataForDD(String code, Record record, List<String> row, PersonDetail personDetail,
+			List<DocumentDetail> documentDetails) {
+
+		String documentType = record.getValue(2, String.class);
+		String documentId = record.getValue(3, String.class);
+		String issuedDateBs = record.getValue(4, String.class);
+		String issuedDateAd = record.getValue(5, String.class);
+		String issuedFrom = record.getValue(6, String.class);
+		String fileId = record.getValue(7, String.class);
+		String backFielId = record.getValue(8, String.class);
+
+		if (documentType.equals("NID")) {
+			DocumentDetail documentDetail = new DocumentDetail();
+
+			documentDetail.setDocumentType(documentType);
+			documentDetail.setDocumentId(documentId);
+			documentDetail.setIssuedDateBs(issuedDateBs);
+			documentDetail.setIssuedDateAd(issuedDateAd);
+			documentDetail.setIssuedFrom(issuedFrom);
+			documentDetail.setFileId(fileId);
+			documentDetail.setBackFielId(backFielId);
+
+			personDetail.documentDetailList.add(documentDetail);
+		} else if (documentType.equals("CZ")) {
+			DocumentDetail documentDetail = new DocumentDetail();
+
+			documentDetail.setDocumentType(documentType);
+			documentDetail.setDocumentId(documentId);
+			documentDetail.setIssuedDateBs(issuedDateBs);
+			documentDetail.setIssuedDateAd(issuedDateAd);
+			documentDetail.setIssuedFrom(issuedFrom);
+			documentDetail.setFileId(fileId);
+			documentDetail.setBackFielId(backFielId);
+
+			personDetail.documentDetailList.add(documentDetail);
+
+		} else if (documentType.equals("BC")) {
+			DocumentDetail documentDetail = new DocumentDetail();
+
+			documentDetail.setDocumentType(documentType);
+			documentDetail.setDocumentId(documentId);
+			documentDetail.setIssuedDateBs(issuedDateBs);
+			documentDetail.setIssuedDateAd(issuedDateAd);
+			documentDetail.setIssuedFrom(issuedFrom);
+			documentDetail.setFileId(fileId);
+			documentDetail.setBackFielId(backFielId);
+
+			personDetail.documentDetailList.add(documentDetail);
+		} else if (documentType.equals("NR")) {
+			DocumentDetail documentDetail = new DocumentDetail();
+
+			documentDetail.setDocumentType(documentType);
+			documentDetail.setDocumentId(documentId);
+			documentDetail.setIssuedDateBs(issuedDateBs);
+			documentDetail.setIssuedDateAd(issuedDateAd);
+			documentDetail.setIssuedFrom(issuedFrom);
+			documentDetail.setFileId(fileId);
+			documentDetail.setBackFielId(backFielId);
+
+			personDetail.documentDetailList.add(documentDetail);
+		} else if (documentType.equals("PP")) {
+			DocumentDetail documentDetail = new DocumentDetail();
+
+			documentDetail.setDocumentType(documentType);
+			documentDetail.setDocumentId(documentId);
+			documentDetail.setIssuedDateBs(issuedDateBs);
+			documentDetail.setIssuedDateAd(issuedDateAd);
+			documentDetail.setIssuedFrom(issuedFrom);
+			documentDetail.setFileId(fileId);
+			documentDetail.setBackFielId(backFielId);
+
+			personDetail.documentDetailList.add(documentDetail);
+		} else if (documentType.equals("O")) {
+			DocumentDetail documentDetail = new DocumentDetail();
+
+			documentDetail.setDocumentType(documentType);
+			documentDetail.setDocumentId(documentId);
+			documentDetail.setIssuedDateBs(issuedDateBs);
+			documentDetail.setIssuedDateAd(issuedDateAd);
+			documentDetail.setIssuedFrom(issuedFrom);
+			documentDetail.setFileId(fileId);
+			documentDetail.setBackFielId(backFielId);
+
+			personDetail.documentDetailList.add(documentDetail);
+		}
+
 		String checkkkk2 = record.getValue(2, String.class);
 		String checkkkk3 = record.getValue(3, String.class);
 		String checkkkk4 = record.getValue(4, String.class);

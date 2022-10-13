@@ -5,11 +5,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class DocumentDetails {
+public class DocumentDetail {
 
 	private String boid;
 
 	private String documentType;
+
 	private String documentId;
 	private String issuedDateBs;
 	private String issuedDateAd;
