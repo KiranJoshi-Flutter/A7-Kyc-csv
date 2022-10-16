@@ -281,6 +281,31 @@ public class CsvController2 {
 	}
 
 	private void getDataForAD(String code, Record record, List<String> row) {
+
+		String boid = record.getValue(2, String.class);
+		String country = record.getValue(3, String.class);
+		String state = record.getValue(4, String.class);
+		String district = record.getValue(5, String.class);
+		String muncipality = record.getValue(6, String.class);
+		String ward = record.getValue(7, String.class);
+		String tole = record.getValue(8, String.class);
+		String blockNo = record.getValue(9, String.class);
+		String telephoneNo = record.getValue(10, String.class);
+		String emailId = record.getValue(11, String.class);
+		String mobileNo = record.getValue(12, String.class);
+		String gps = record.getValue(13, String.class);
+		String isPermSame = record.getValue(14, String.class);
+
+		AddressDetails addressDetails = new AddressDetails();
+
+		addressDetails.setBoid(boid);
+		addressDetails.setCountry(country);
+		addressDetails.setState(state);
+		addressDetails.setDistrict(district);
+		addressDetails.setMuncipality(muncipality);
+		addressDetails.setWard(ward);
+		addressDetails.setTole(tole);
+
 		String checkkkkkk2 = record.getValue(2, String.class);
 		String checkkkkkk3 = record.getValue(3, String.class);
 		String checkkkkk4 = record.getValue(4, String.class);

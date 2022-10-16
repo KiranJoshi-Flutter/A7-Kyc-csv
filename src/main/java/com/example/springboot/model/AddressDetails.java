@@ -22,16 +22,19 @@ public class AddressDetails {
 	private String telephoneNo;
 	private String emailId;
 	private String mobileNo;
-	private String isPermSame;
-	private String perCountry;
-	private String perState;
-	private String perDistrict;
-	private String perMuncipality;
-	private String perWard;
-	private String perTole;
-	private String perBlockNo;
-	private String perTelephoneNo;
 	private String gps;
-	private String mapFileId;
+	private String isPermSame;
+//	private String mapFileId;
+
+//	private String perCountry;
+//	private String perState;
+//	private String perDistrict;
+//	private String perMuncipality;
+//	private String perWard;
+//	private String perTole;
+//	private String perBlockNo;
+//	private String perTelephoneNo;
+//	private String gps;
+//	private String mapFileId;
 
 }
