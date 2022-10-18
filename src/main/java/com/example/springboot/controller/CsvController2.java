@@ -24,10 +24,9 @@ import com.univocity.parsers.csv.CsvParserSettings;
 @RestController
 public class CsvController2 {
 
-	List<PersonDetail> personDetails = new ArrayList<>();
-
 	@PostMapping("/uploadKycCsv2")
 	public List<PersonDetail> uploadKycCsv(@RequestParam("file") MultipartFile file) throws Exception {
+		List<PersonDetail> personDetails = new ArrayList<>();
 
 		InputStream inputStream = file.getInputStream();
 		CsvParserSettings setting = new CsvParserSettings();
@@ -41,18 +40,15 @@ public class CsvController2 {
 		List<DocumentDetail> documentDetails = new ArrayList<>();
 		PersonDetail personDetail = new PersonDetail();
 
+		String prevCode = null;
 		for (Record record : parseAllRecords) {
 			System.out.println(record);
 			String code = record.getValue(1, String.class);
 
 			if (code == null) {
-				code = "DD";
-			}
-
-//			if (!code.equals("FD")) {
-//			if (code.equals("DD")) {
-//				personDetail.setFamilyDetailList(familyDetails);
-//			}
+				code = prevCode;
+			} else
+				prevCode = code;
 
 			List<String> row = new ArrayList<String>();
 
