@@ -135,7 +135,12 @@ public class CsvController2 {
 		personDetail.setFirstNameEng(firstNameEng);
 		personDetail.setMiddelNameEng(middelNameEng);
 		personDetail.setLastNameEng(lastNameEng);
-		personDetail.setGuardianDetails(null);
+		personDetail.setBiometrics(null);
+		personDetail.setFamilyDetailList(null);
+		personDetail.setBankDetail(null);
+		personDetail.setDocumentDetailList(null);
+		personDetail.setOccupationDetail(null);
+//		personDetail.setGuardianDetails(null);
 		guardianDetails.setPersonDetail(personDetail);
 
 		guardianDetails.setRelationshipWithApplicant(relationshipWithApplicant);
@@ -367,6 +372,11 @@ public class CsvController2 {
 			personDetail.setFirstNameNep(firstNameNep);
 			personDetail.setMiddleNameNep(middleNameNep);
 			personDetail.setLastNameNep(lastNameNep);
+			personDetail.setBiometrics(null);
+			personDetail.setFamilyDetailList(null);
+			personDetail.setBankDetail(null);
+			personDetail.setDocumentDetailList(null);
+			personDetail.setOccupationDetail(null);
 
 			familyDetail.setPersonDetail(personDetail);
 
@@ -384,6 +394,11 @@ public class CsvController2 {
 			personDetail.setFirstNameNep(firstNameNep);
 			personDetail.setMiddleNameNep(middleNameNep);
 			personDetail.setLastNameNep(lastNameNep);
+			personDetail.setBiometrics(null);
+			personDetail.setFamilyDetailList(null);
+			personDetail.setBankDetail(null);
+			personDetail.setDocumentDetailList(null);
+			personDetail.setOccupationDetail(null);
 
 			familyDetail.setPersonDetail(personDetail);
 
@@ -401,6 +416,11 @@ public class CsvController2 {
 			personDetail.setFirstNameNep(firstNameNep);
 			personDetail.setMiddleNameNep(middleNameNep);
 			personDetail.setLastNameNep(lastNameNep);
+			personDetail.setBiometrics(null);
+			personDetail.setFamilyDetailList(null);
+			personDetail.setBankDetail(null);
+			personDetail.setDocumentDetailList(null);
+			personDetail.setOccupationDetail(null);
 
 			familyDetail.setPersonDetail(personDetail);
 
