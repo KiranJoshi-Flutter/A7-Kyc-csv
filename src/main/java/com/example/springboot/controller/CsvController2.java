@@ -33,7 +33,6 @@ public class CsvController2 {
 		setting.setHeaderExtractionEnabled(false);
 		CsvParser parser = new CsvParser(setting);
 		List<Record> parseAllRecords = parser.parseAllRecords(inputStream);
-		System.out.println("--------------------------------------------");
 
 		List<List<String>> matrix = new ArrayList<List<String>>();
 		List<FamilyDetail> familyDetails = new ArrayList<>();
@@ -99,11 +98,6 @@ public class CsvController2 {
 
 		}
 
-		System.out.println("------------------------------------------------");
-
-		System.out.println(matrix);
-
-//		return "Upload Successful !!!";
 		return personDetails;
 	}
 
@@ -169,35 +163,6 @@ public class CsvController2 {
 		documentDetail.setBackFielId(backFileId);
 		guardianDetails.setDocumentDetail(documentDetail);
 
-//		guardianDetails.setCountry(country);
-//		guardianDetails.setState(State);
-//		guardianDetails.setDistrict(district);
-//		guardianDetails.setMuncipality(muncipality);
-//		guardianDetails.setWard(ward);
-//		guardianDetails.setTole(tole);
-//		guardianDetails.setBlockNo(blockNo);
-//		guardianDetails.setTelephone(telephone);
-//		guardianDetails.setEmail(email);
-//		guardianDetails.setMobileNo(mobileNo);
-//		guardianDetails.setCitizenshipId(citizenshipId);
-//		guardianDetails.setIssuedDateBs(issuedDateBs);
-//		guardianDetails.setIssuedDateAd(issuedDateAd);
-//		guardianDetails.setIssuedFrom(issuedFrom);
-//		guardianDetails.setFileId(fileId);
-//		guardianDetails.setBackFileId(backFileId);
-
-		String checkkkkkkkkk2 = record.getValue(2, String.class);
-		String checkkkkkkkkk3 = record.getValue(3, String.class);
-		String checkkkkkkkk4 = record.getValue(4, String.class);
-
-		row.add(checkkkkkkkkk2);
-		row.add(checkkkkkkkkk3);
-		row.add(checkkkkkkkk4);
-
-		System.out.println(row);
-
-		System.out.println("GD check");
-
 		return guardianDetails;
 
 	}
@@ -205,10 +170,6 @@ public class CsvController2 {
 	private OccupationDetail getDataForOD(String code, Record record, List<String> row) {
 
 		OccupationDetail occupationDetail = new OccupationDetail();
-
-		String checkkkkkkkk2 = record.getValue(2, String.class);
-		String checkkkkkkkk3 = record.getValue(3, String.class);
-		String checkkkkkkk4 = record.getValue(4, String.class);
 
 		String boid = record.getValue(2, String.class);
 		String occupationType = record.getValue(3, String.class);
@@ -232,14 +193,6 @@ public class CsvController2 {
 		occupationDetail.setInvolvementIn(involvementIn);
 		occupationDetail.setPartiallyExposedPerson(partiallyExposedPerson);
 
-		row.add(checkkkkkkkk2);
-		row.add(checkkkkkkkk3);
-		row.add(checkkkkkkk4);
-
-		System.out.println(row);
-
-		System.out.println("OD check");
-
 		return occupationDetail;
 
 	}
@@ -260,18 +213,6 @@ public class CsvController2 {
 		bankDetail.setBankBranch(bankBranch);
 		bankDetail.setAccountNo(accountNo);
 
-		String checkkkkkkk2 = record.getValue(2, String.class);
-		String checkkkkkkk3 = record.getValue(3, String.class);
-		String checkkkkkk4 = record.getValue(4, String.class);
-
-		row.add(checkkkkkkk2);
-		row.add(checkkkkkkk3);
-		row.add(checkkkkkk4);
-
-		System.out.println(row);
-
-		System.out.println("BD check");
-
 		personDetail.setBankDetail(bankDetail);
 
 	}
@@ -290,7 +231,7 @@ public class CsvController2 {
 		System.out.println("AD check");
 	}
 
-	private String getDataForDD(String code, Record record, List<String> row, PersonDetail personDetail,
+	private void getDataForDD(String code, Record record, List<String> row, PersonDetail personDetail,
 			List<DocumentDetail> documentDetails) {
 
 		String documentType = record.getValue(2, String.class);
@@ -375,22 +316,6 @@ public class CsvController2 {
 
 			personDetail.documentDetailList.add(documentDetail);
 		}
-
-		String checkkkk2 = record.getValue(2, String.class);
-		String checkkkk3 = record.getValue(3, String.class);
-		String checkkkk4 = record.getValue(4, String.class);
-
-		row.add(checkkkk2);
-		row.add(checkkkk3);
-		row.add(checkkkk4);
-
-		String multiple = "DD";
-
-		System.out.println(row);
-
-		System.out.println("DD check");
-
-		return multiple;
 	}
 
 	private void getDataForFD(String code, Record record, List<String> row, PersonDetail personDetail2,
@@ -420,12 +345,6 @@ public class CsvController2 {
 
 			familyDetail.setPersonDetail(personDetail);
 
-			System.out.println("-------------");
-			System.out.println(familyDetail);
-			System.out.println("-------------");
-
-//			familyDetails.add(familyDetail);
-
 			personDetail2.familyDetailList.add(familyDetail);
 
 		} else if (type.equals("F")) {
@@ -442,12 +361,6 @@ public class CsvController2 {
 			personDetail.setLastNameNep(lastNameNep);
 
 			familyDetail.setPersonDetail(personDetail);
-
-			System.out.println("-------------");
-			System.out.println(familyDetail);
-			System.out.println("-------------");
-
-//			familyDetails.add(familyDetail);
 
 			personDetail2.familyDetailList.add(familyDetail);
 
@@ -466,31 +379,9 @@ public class CsvController2 {
 
 			familyDetail.setPersonDetail(personDetail);
 
-			System.out.println("-------------");
-			System.out.println(familyDetail);
-			System.out.println("-------------");
-
-//			familyDetails.add(familyDetail);
-
 			personDetail2.familyDetailList.add(familyDetail);
 
 		}
-
-		String checkkk2 = record.getValue(2, String.class);
-		String checkkk3 = record.getValue(3, String.class);
-		String checkkk4 = record.getValue(4, String.class);
-
-		row.add(checkkk2);
-		row.add(checkkk3);
-		row.add(checkkk4);
-
-		System.out.println(row);
-
-		System.out.println("FD check");
-
-		System.out.println("-------------");
-		System.out.println(familyDetails);
-		System.out.println("-------------");
 
 	}
 
@@ -516,10 +407,6 @@ public class CsvController2 {
 		String differentlyAbled = record.getValue(17, String.class);
 		String otherBoids = record.getValue(18, String.class);
 
-//		row.add(boid);
-//		row.add(photoFieldId);
-//		row.add(firstNameEng);
-
 		personDetail.setBoid(boid);
 		personDetail.setPhotoFileId(photoFieldId);
 		personDetail.setFirstNameEng(firstNameEng);
@@ -541,14 +428,6 @@ public class CsvController2 {
 		personDetail.setDifferentlyAbled(differentlyAbled);
 
 		personDetail.setOtherBoids(otherBoids);
-
-//		System.out.println(row);
-//
-//		System.out.println("PD check");
-//
-//		System.out.println("-------------");
-//		System.out.println(personDetail);
-//		System.out.println("-------------");
 
 		return personDetail;
 
@@ -575,14 +454,6 @@ public class CsvController2 {
 		biometrics.setLeftFileId(leftFileId);
 		biometrics.setRightFileId(rightFileId);
 		biometrics.setSignatureFileId(signatureFileId);
-
-//		System.out.println(row);
-//
-//		System.out.println("BM check");
-//
-//		System.out.println("-------------");
-//		System.out.println(biometrics);
-//		System.out.println("-------------");
 
 		return biometrics;
 
