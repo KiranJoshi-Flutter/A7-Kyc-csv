@@ -45,7 +45,8 @@ public class PersonDetail {
 //	private List<DocumentDetails> documentDetailList = new ArrayList<>();
 	public List<DocumentDetail> documentDetailList = new ArrayList<>();
 //	private List<AddressDetails> addressDetailList = new ArrayList<>();
-	private BankDetail bankDetail = new BankDetail();
+//	private BankDetail bankDetail = new BankDetail();
+	public List<BankDetail> bankDetails = new ArrayList<>();
 //	private List<OccupationDetails> occupationDetailList = new ArrayList<>();
 	private OccupationDetail occupationDetail = new OccupationDetail();
 
