@@ -72,7 +72,7 @@ public class CsvController2 {
 				break;
 
 			case "AD":
-				getDataForAD(code, record, row);
+				getDataForAD(code, record, row, personDetail);
 				break;
 
 			case "BD":
@@ -222,7 +222,7 @@ public class CsvController2 {
 
 	}
 
-	private void getDataForAD(String code, Record record, List<String> row) {
+	private void getDataForAD(String code, Record record, List<String> row, PersonDetail personDetail) {
 
 		String boid = record.getValue(2, String.class);
 		String country = record.getValue(3, String.class);
@@ -247,6 +247,12 @@ public class CsvController2 {
 		addressDetails.setMuncipality(muncipality);
 		addressDetails.setWard(ward);
 		addressDetails.setTole(tole);
+		addressDetails.setBlockNo(blockNo);
+		addressDetails.setTelephoneNo(telephoneNo);
+		addressDetails.setEmailId(emailId);
+		addressDetails.setMobileNo(mobileNo);
+		addressDetails.setGps(gps);
+		addressDetails.setIsPermSame(isPermSame);
 
 		String checkkkkkk2 = record.getValue(2, String.class);
 		String checkkkkkk3 = record.getValue(3, String.class);
