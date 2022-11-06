@@ -22,8 +22,8 @@ public class AddressDetails {
 	private String emailId;
 	private String mobileNo;
 	private String gps;
-	private String isPermSame;
-//	private String mapFileId;
+//	private String isPermSame;
+	private String mapFileId;
 
 //	private String perCountry;
 //	private String perState;

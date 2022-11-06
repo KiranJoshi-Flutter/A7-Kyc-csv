@@ -238,33 +238,60 @@ public class CsvController2 {
 		String gps = record.getValue(13, String.class);
 		String isPermSame = record.getValue(14, String.class);
 
-		AddressDetails addressDetails = new AddressDetails();
+		String perCountry = record.getValue(15, String.class);
+		String perState = record.getValue(16, String.class);
+		String perDistrict = record.getValue(17, String.class);
+		String perMuncipality = record.getValue(18, String.class);
+		String perWard = record.getValue(19, String.class);
+		String perTole = record.getValue(20, String.class);
+		String perBlockNo = record.getValue(21, String.class);
+		String perTelephoneNo = record.getValue(22, String.class);
+		String perEmailId = record.getValue(23, String.class);
+		String perMobileNo = record.getValue(24, String.class);
+		String perGps = record.getValue(25, String.class);
+		String perMapFileId = record.getValue(26, String.class);
 
-		addressDetails.setBoid(boid);
-		addressDetails.setCountry(country);
-		addressDetails.setState(state);
-		addressDetails.setDistrict(district);
-		addressDetails.setMuncipality(muncipality);
-		addressDetails.setWard(ward);
-		addressDetails.setTole(tole);
-		addressDetails.setBlockNo(blockNo);
-		addressDetails.setTelephoneNo(telephoneNo);
-		addressDetails.setEmailId(emailId);
-		addressDetails.setMobileNo(mobileNo);
-		addressDetails.setGps(gps);
-		addressDetails.setIsPermSame(isPermSame);
+		AddressDetails tempAddressDetails = new AddressDetails();
 
-		String checkkkkkk2 = record.getValue(2, String.class);
-		String checkkkkkk3 = record.getValue(3, String.class);
-		String checkkkkk4 = record.getValue(4, String.class);
+		tempAddressDetails.setBoid(boid);
+		tempAddressDetails.setCountry(country);
+		tempAddressDetails.setState(state);
+		tempAddressDetails.setDistrict(district);
+		tempAddressDetails.setMuncipality(muncipality);
+		tempAddressDetails.setWard(ward);
+		tempAddressDetails.setTole(tole);
+		tempAddressDetails.setBlockNo(blockNo);
+		tempAddressDetails.setTelephoneNo(telephoneNo);
+		tempAddressDetails.setEmailId(emailId);
+		tempAddressDetails.setMobileNo(mobileNo);
+		tempAddressDetails.setGps(gps);
 
-		row.add(checkkkkkk2);
-		row.add(checkkkkkk3);
-		row.add(checkkkkk4);
+		AddressDetails permAddressDetails = new AddressDetails();
 
-		System.out.println(row);
+		if (isPermSame.equals("N")) {
+
+			permAddressDetails.setCountry(perCountry);
+			permAddressDetails.setState(perState);
+			permAddressDetails.setDistrict(perDistrict);
+			permAddressDetails.setMuncipality(perMuncipality);
+			permAddressDetails.setWard(perWard);
+			permAddressDetails.setTole(perTole);
+			permAddressDetails.setBlockNo(perBlockNo);
+			permAddressDetails.setTelephoneNo(perTelephoneNo);
+			permAddressDetails.setEmailId(perEmailId);
+			permAddressDetails.setMobileNo(perMobileNo);
+			permAddressDetails.setGps(perGps);
+			permAddressDetails.setMapFileId(perMapFileId);
+
+		}
 
 		System.out.println("AD check");
+
+//		personDetail.setAddressDetailList.add(addressDetails);
+//		personDetail.documentDetailList.add(documentDetail);
+		personDetail.addressDetailList.add(tempAddressDetails);
+		personDetail.addressDetailList.add(permAddressDetails);
+
 	}
 
 	private void getDataForDD(String code, Record record, List<String> row, PersonDetail personDetail,
